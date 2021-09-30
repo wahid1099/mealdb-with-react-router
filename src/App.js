@@ -1,23 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from "./Components/Header/Header";
+import {Row,Button,Col} from "react-bootstrap";
+import Meal from "./Components/Meals/Meal";
+import Meals from "./Components/Meals/Meals";
+import Resturent from "./Components/Resturent/Resturent";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Aboutus from "./Components/About/Aboutus";
+import Contact from "./Components/Contact/Contact";
+
+import NotFound from "./Components/Error Page/NotFound";
+import MealDetails from "./Components/Meals/MealDetails";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Router>
+         <Switch>
+
+           <Route exact path="/">
+             <Resturent></Resturent>
+           </Route>
+           <Route exact path="/resturent">
+             <Resturent></Resturent>
+           </Route>
+
+           <Route exact path="/about">
+             <Aboutus></Aboutus>
+           </Route>
+           <Route exact path="/resturent/:mealid">
+             <MealDetails></MealDetails>
+           </Route>
+             <Route exact path="/contact">
+               <Contact></Contact>
+             </Route>
+
+
+
+         </Switch>
+       </Router>
+
+
+
     </div>
   );
 }
